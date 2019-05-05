@@ -1,0 +1,11 @@
+version: '3'
+services:
+  db:
+    image: ${POSTGRES_IMAGE_NAME}
+    restart:  always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    volumes:
+        - ./migration/database.sql:/data/application/init.sql
