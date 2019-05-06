@@ -1,0 +1,16 @@
+local:
+    driver: postgres
+    open: host='' port='' user='' password='' dbname='' sslmode=disable
+    dbversion: 
+development:
+    driver: postgres
+    open: host='' port='' user='' password='' dbname='' sslmode=disable
+    dbversion: 
+staging:
+    driver: postgres
+    open: host='' port='' user='' password='' dbname='' sslmode=disable
+    dbversion: 
+production:
+    driver: postgres
+    open: host='' port='' user='' password='' dbname='' sslmode=disable
+    dbversion: 
