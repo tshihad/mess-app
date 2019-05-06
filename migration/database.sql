@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS mess_app;
+CREATE DATABASE IF NOT EXISTS mess owner postgres encoding 'utf8';

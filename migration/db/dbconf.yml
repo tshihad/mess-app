@@ -1,16 +1,16 @@
 local:
     driver: postgres
-    open: host='' port='' user='' password='' dbname='' sslmode=disable
-    dbversion: 
+    open: host='localhost' port='5432' user='postgres' password='pswd123' dbname='mess' sslmode=disable
+    dbversion: 20190506200454
 development:
     driver: postgres
-    open: host='' port='' user='' password='' dbname='' sslmode=disable
-    dbversion: 
+    open: host='localhost' port='5432' user='postgres' password='pswd123' dbname='mess' sslmode=disable
+    dbversion: 20190506200454
 staging:
     driver: postgres
-    open: host='' port='' user='' password='' dbname='' sslmode=disable
-    dbversion: 
+    open: host='localhost' port='5432' user='postgres' password='pswd123' dbname='mess' sslmode=disable
+    dbversion: 20190506200454
 production:
     driver: postgres
-    open: host='' port='' user='' password='' dbname='' sslmode=disable
-    dbversion: 
+    open: host='localhost' port='5432' user='postgres' password='pswd123' dbname='mess' sslmode=disable
+    dbversion: 20190506200454
