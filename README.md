@@ -1,6 +1,9 @@
 # MESS-APP
 Mess-app is to manage mess bugets amoung roommates.
 
+## Seting up
+```docker-compose up -d```
+
 ## ToDo:
  - Create architecture diagram.
  - Create swagger file for all api specification.
@@ -8,4 +11,4 @@ Mess-app is to manage mess bugets amoung roommates.
  - Implement logger using logrus package.
 
 # Contributions
- - Fork branch develop and raise PR
+ - Checkout branch from staging and make PR to develop.
