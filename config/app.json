@@ -1,0 +1,8 @@
+{
+    "app": {
+        "serve": {
+            "host": "localhost",
+            "port": 8080
+        }
+    }
+}
