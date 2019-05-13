@@ -2,7 +2,10 @@
 Mess-app is to manage mess bugets amoung roommates.
 
 ## Seting up
+Setting up postgres.
 ```docker-compose up -d```
+Installing goose
+```go get bitbucket.org/liamstask/goose/cmd/goose```
 
 ## ToDo:
  - Create architecture diagram.
@@ -11,4 +14,4 @@ Mess-app is to manage mess bugets amoung roommates.
  - Implement logger using logrus package.
 
 # Contributions
- - Checkout branch from staging and make PR to develop.
+ - Checkout branch from develop and make PR to develop.
