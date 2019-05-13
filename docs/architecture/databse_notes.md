@@ -57,3 +57,9 @@
 - recipient_id INTEGER PRIMARY KEY
 - bill_id INTEGER FORIEGN KEY
 - amount FLOAT
+
+## menus
+#### Fields
+- menu_id INTEGER PRIMARY KEY
+- name STRING
+- week INTEGER
