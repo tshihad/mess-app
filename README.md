@@ -4,6 +4,7 @@ Mess-app is to manage mess bugets amoung roommates.
 ## Seting up
 Setting up postgres.
 ```docker-compose up -d```
+
 Installing goose
 ```go get bitbucket.org/liamstask/goose/cmd/goose```
 
