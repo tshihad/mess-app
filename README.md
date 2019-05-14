@@ -13,6 +13,10 @@ To run db migration
 cd migration
 goose -env local up
 ```
+Install go-swagger
+```
+go get -u github.com/go-swagger/go-swagger/cmd/swagger
+```
 
 ## ToDo:
  - Create architecture diagram.
