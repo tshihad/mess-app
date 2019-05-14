@@ -60,16 +60,12 @@ CREATE TABLE goods_purchase(
     is_purchased BOOLEAN
 );
 
-    CREATE TABLE payer(
-        payer_id INTEGER PRIMARY KEY,
-        bill_id INTEGER REFERENCES bill(bill_id),
-        amount FLOAT
-    );
-
-CREATE TABLE reciepient(
-    recipient_id INTEGER PRIMARY KEY,
+CREATE TABLE participent(
+    users_id INTEGER REFERENCES users(users_id),
     bill_id INTEGER REFERENCES bill(bill_id),
-    amount FLOAT
+    amount FLOAT,
+    is_payer BOOLEAN,
+    PRIMARY KEY(users_id,bill_id)
 );
 
 CREATE TABLE menus(
