@@ -7,6 +7,12 @@ Setting up postgres.
 Installing goose
 ```go get bitbucket.org/liamstask/goose/cmd/goose```
 
+To run db migration
+```
+cd migration
+goose -env local up
+```
+
 ## ToDo:
  - Create architecture diagram.
  - Create swagger file for all api specification.
