@@ -4,12 +4,17 @@ import (
 	"database/sql"
 	"fmt"
 	"mess-app/internal/api"
+	"mess-app/shared"
 	"net/http"
+	"os"
+
+	"github.com/sirupsen/logrus"
 )
 
 func serveApp() {
 	done := make(chan int)
-	app := api.NewApp(nil, &sql.DB{})
+	logger := shared.NewLogger(logrus.DebugLevel, os.Stdout)
+	app := api.NewApp(logger, &sql.DB{})
 	go func() {
 		err := http.ListenAndServe(":8080", app.Router())
 		if err != nil {

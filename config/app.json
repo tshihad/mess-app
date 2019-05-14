@@ -3,6 +3,9 @@
         "serve": {
             "host": "localhost",
             "port": 8080
+        },
+        "logger":{
+            "level":"debug"
         }
     }
 }
