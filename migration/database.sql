@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS mess owner postgres encoding 'utf8';
+CREATE DATABASE mess owner postgres encoding 'utf8';
