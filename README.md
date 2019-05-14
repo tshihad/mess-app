@@ -13,7 +13,14 @@ To run db migration
 cd migration
 goose -env local up
 ```
-
+To generate model
+```
+cd internal
+swagger generate model --name=[model-name] --spec=../docs/swagger.yml
+eg:
+swagger generate model --name=UserPayload --spec=../docs/swagger.yml
+```
+`model-name` is the models given in swagger file. eg: UserPayload
 ## ToDo:
  - Create architecture diagram.
  - Create swagger file for all api specification.
