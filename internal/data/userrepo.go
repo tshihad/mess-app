@@ -10,7 +10,7 @@ import (
 
 var userInsertQuery = `INSERT INTO users ( users_name, email, users_type) VALUES($1,$2,$3)`
 
-func (r *repo) InsertUser(ctx context.Context, user *models.UserPayload) error {
+func (r *repo) InsertUser(ctx context.Context, user models.UserPayload) error {
 	var userType int
 	switch *user.UserType {
 	case core.ADMIN_KEY:
@@ -24,8 +24,8 @@ func (r *repo) InsertUser(ctx context.Context, user *models.UserPayload) error {
 	if err != nil {
 		return errors.Wrap(err, "Failed to insert user")
 	}
-	if l, err := res.LastInsertId(); err != nil || l != 1 {
-		return errors.Wrap(err, "Failed to insert user")
+	if l, err := res.RowsAffected(); err != nil || l != 1 {
+		return errors.New("Failed to insert user")
 	}
 	return nil
 }

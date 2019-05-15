@@ -6,6 +6,12 @@
         },
         "logger":{
             "level":"debug"
+        },
+        "db":{
+            "name":"mess",
+            "port":"5432",
+            "host":"localhost",
+            "password":"pswd123"
         }
     }
 }

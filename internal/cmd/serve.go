@@ -11,10 +11,10 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func serveApp() {
+func serveApp(db *sql.DB) {
 	done := make(chan int)
 	logger := shared.NewLogger(logrus.DebugLevel, os.Stdout)
-	app := api.NewApp(logger, &sql.DB{})
+	app := api.NewApp(logger, db)
 	go func() {
 		err := http.ListenAndServe(":8080", app.Router())
 		if err != nil {

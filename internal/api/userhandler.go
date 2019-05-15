@@ -11,8 +11,8 @@ import (
 // PostUser create new user
 func (a *App) PostUser(w http.ResponseWriter, r *http.Request) {
 	ctx := context.Background()
-	var user *models.UserPayload
-	if err := json.NewDecoder(r.Body).Decode(user); err != nil {
+	var user models.UserPayload
+	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 		a.Fail(w, core.JSON_ERROR_CODE, err.Error(), 500)
 		return
 	}

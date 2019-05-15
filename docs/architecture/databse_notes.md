@@ -27,13 +27,13 @@
 
 ## goods_purchase
 #### Fields
-- goods_purchase_id INTEGER PRIMARY KEY
 - goods_id INTEGER REFERENCES goods(goods_id)
 - bill_id INTEGER REFERENCES bill(bill_id)
 - purchase_date DATE
 - price FLOAT
 - quantity FLOAT
 - is_purchased BOOLEAN
+- PRIMARY KEY(goods_id,bill_id)
 
 ## bill
 #### Fields
