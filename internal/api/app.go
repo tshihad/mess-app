@@ -3,6 +3,7 @@ package api
 import (
 	"database/sql"
 	"mess-app/internal/data"
+	"mess-app/shared"
 
 	"github.com/sirupsen/logrus"
 )
@@ -15,7 +16,8 @@ type App struct {
 
 // NewApp return app instance
 func NewApp(logger logrus.FieldLogger, db *sql.DB) *App {
-	repo := data.NewRepo(logger, db)
+	response := shared.NewResponse(logger)
+	repo := data.NewRepo(logger, db, response)
 	return &App{
 		logger,
 		repo,

@@ -9,7 +9,13 @@ import (
 
 // Response for response function
 type Response struct {
-	logger *logrus.Logger
+	logger logrus.FieldLogger
+}
+
+func NewResponse(logger logrus.FieldLogger) Response {
+	return Response{
+		logger,
+	}
 }
 
 type successResponse struct {
