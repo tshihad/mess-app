@@ -21,6 +21,10 @@ type UserPayload struct {
 	// Required: true
 	Email *string `json:"email"`
 
+	// Password for user
+	// Required: true
+	Password *string `json:"password"`
+
 	// user name
 	// Required: true
 	UserName *string `json:"user_name"`
@@ -36,6 +40,10 @@ func (m *UserPayload) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateEmail(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePassword(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -56,6 +64,15 @@ func (m *UserPayload) Validate(formats strfmt.Registry) error {
 func (m *UserPayload) validateEmail(formats strfmt.Registry) error {
 
 	if err := validate.Required("email", "body", m.Email); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *UserPayload) validatePassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("password", "body", m.Password); err != nil {
 		return err
 	}
 

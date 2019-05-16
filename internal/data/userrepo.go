@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var userInsertQuery = `INSERT INTO users ( users_name, email, users_type) VALUES($1,$2,$3)`
+var userInsertQuery = `INSERT INTO users ( users_name, password, email, users_type) VALUES($1,$2,$3)`
 
 func (r *repo) InsertUser(ctx context.Context, user models.UserPayload) error {
 	var userType int
@@ -20,7 +20,7 @@ func (r *repo) InsertUser(ctx context.Context, user models.UserPayload) error {
 	case core.COOK_KEY:
 		userType = core.COOK
 	}
-	res, err := r.DB.Exec(userInsertQuery, *user.UserName, *user.Email, userType)
+	res, err := r.DB.Exec(userInsertQuery, *user.Email, *user.UserName, *user.Email, userType)
 	if err != nil {
 		return errors.Wrap(err, "Failed to insert user")
 	}

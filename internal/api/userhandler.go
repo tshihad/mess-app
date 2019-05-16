@@ -9,7 +9,7 @@ import (
 )
 
 // PostUser create new user
-func (a *App) PostUser(w http.ResponseWriter, r *http.Request) {
+func (a *App) handlePostUser(w http.ResponseWriter, r *http.Request) {
 	ctx := context.Background()
 	var user models.UserPayload
 	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
@@ -20,5 +20,7 @@ func (a *App) PostUser(w http.ResponseWriter, r *http.Request) {
 		a.Fail(w, 0, err.Error(), 500)
 		return
 	}
+	// Removing password from response
+	*user.Password = ""
 	a.Success(w, 201, user)
 }
