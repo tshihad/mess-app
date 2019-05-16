@@ -2,6 +2,7 @@
 Mess-app is to manage mess bugets amoung roommates.
 
 ## Seting up
+### Local environment
 Setting up postgres.
 ```docker-compose up -d```
 
@@ -10,6 +11,7 @@ Installing goose
 
 To run db migration
 ```
+source config/local.env
 cd migration
 goose -env local up
 ```
