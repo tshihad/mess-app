@@ -8,16 +8,14 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func mustPrepareDB() (*sql.DB, error) {
-	conf := make(map[string]string)
-	conf["host"] = "localhost"
-	conf["dbname"] = "mess"
-	conf["password"] = "pswd123"
-	conf["port"] = "5432"
-	conf["user"] = "postgres"
-
-	pqstring := fmt.Sprintf("host=%s port=%s user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		conf["host"], conf["port"], conf["user"], conf["password"], conf["dbname"])
+func mustPrepareDB(c *configs) (*sql.DB, error) {
+	pqstring := fmt.Sprintf(
+		"host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		c.dbConfig.host,
+		c.dbConfig.port,
+		c.dbConfig.user,
+		c.dbConfig.password,
+		c.dbConfig.dbName,
+	)
 	return sql.Open("postgres", pqstring)
 }
