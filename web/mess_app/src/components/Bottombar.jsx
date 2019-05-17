@@ -10,8 +10,6 @@ import Group from '@material-ui/icons/Group';
 import Assignment from '@material-ui/icons/Assignment';
 import SwapHoriz from '@material-ui/icons/SwapHoriz';
 import Restaurant from '@material-ui/icons/RestaurantMenu';
-import Typography from '@material-ui/core/Typography';
-import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = theme => ({
     root: {
@@ -38,18 +36,6 @@ function BottomAppBar(props) {
     const { classes } = props;
     return (
         <Fragment>
-            <div className={classes.root}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
-                            Mess App
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-            </div>
             <CssBaseline />
             <AppBar position="fixed" color="primary" className={classes.bottomBar}>
                 <Toolbar className={classes.toolbar}>
