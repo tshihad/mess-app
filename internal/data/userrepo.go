@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var userInsertQuery = `INSERT INTO users ( users_name, password, email, users_type) VALUES($1,$2,$3)`
+var userInsertQuery = `INSERT INTO users ( users_name, email, password, users_type) VALUES($1,$2,$3.$4)`
 
 func (r *repo) InsertUser(ctx context.Context, user models.UserPayload) error {
 	var userType int
@@ -20,7 +20,11 @@ func (r *repo) InsertUser(ctx context.Context, user models.UserPayload) error {
 	case core.COOK_KEY:
 		userType = core.COOK
 	}
-	res, err := r.DB.Exec(userInsertQuery, *user.Email, *user.UserName, *user.Email, userType)
+	hashedPwd, err := core.HashPassword([]byte(*user.Password))
+	if err != nil {
+		return errors.Wrap(err, "Failed to hash password")
+	}
+	res, err := r.DB.Exec(userInsertQuery, *user.Email, *user.UserName, hashedPwd, userType)
 	if err != nil {
 		return errors.Wrap(err, "Failed to insert user")
 	}
