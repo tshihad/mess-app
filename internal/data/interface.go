@@ -15,6 +15,7 @@ type Repo interface {
 // UserRepo for user opertations
 type UserRepo interface {
 	InsertUser(ctx context.Context, user models.UserPayload) error
+	GetUsers(ctx context.Context) (*models.UserPayload, error)
 }
 
 // Cache := TODO

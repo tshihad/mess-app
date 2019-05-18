@@ -33,3 +33,6 @@ func (r *repo) InsertUser(ctx context.Context, user models.UserPayload) error {
 	}
 	return nil
 }
+func (r *repo) GetUsers(ctx context.Context) (*models.UserPayload, error) {
+	return nil, nil
+}

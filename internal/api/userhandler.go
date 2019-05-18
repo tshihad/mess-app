@@ -28,3 +28,13 @@ func (a *App) handlePostUser(w http.ResponseWriter, r *http.Request) {
 	}
 	a.Success(w, http.StatusCreated, resp)
 }
+
+func (a *App) handleGetUsers(w http.ResponseWriter, r *http.Request) {
+	ctx := context.Background()
+	users, err := a.GetUsers(ctx)
+	if err != nil {
+		a.Fail(w, 0, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	a.Success(w, http.StatusOK, users)
+}
