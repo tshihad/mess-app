@@ -77,11 +77,10 @@ CREATE TABLE menus(
 -- +goose Down
 -- SQL section 'Down' is executed when this migration is rolled back
 
-DROP TABLE users CASCADE;
-DROP TABLE attendence CASCADE;
-DROP TABLE goods CASCADE;
-DROP TABLE goods_purchase CASCADE;
-DROP TABLE bill CASCADE;
-DROP TABLE payer CASCADE;
-DROP TABLE reciepient CASCADE;
-DROP TABLE menus CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS attendence CASCADE;
+DROP TABLE IF EXISTS goods CASCADE;
+DROP TABLE IF EXISTS goods_purchase CASCADE;
+DROP TABLE IF EXISTS bill CASCADE;
+DROP TABLE IF EXISTS participent CASCADE;
+DROP TABLE IF EXISTS menus CASCADE;
