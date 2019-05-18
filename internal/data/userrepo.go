@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var userInsertQuery = `INSERT INTO users ( users_name, email, password, users_type) VALUES($1,$2,$3.$4)`
+var userInsertQuery = `INSERT INTO users ( users_name, email, password_digest, users_type) VALUES($1,$2,$3,$4)`
 
 func (r *repo) InsertUser(ctx context.Context, user models.UserPayload) error {
 	var userType int
