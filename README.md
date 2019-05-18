@@ -2,6 +2,7 @@
 Mess-app is to manage mess bugets amoung roommates.
 
 ## Seting up
+### Local environment
 Setting up postgres.
 ```docker-compose up -d```
 
@@ -10,10 +11,18 @@ Installing goose
 
 To run db migration
 ```
+source config/local.env
 cd migration
 goose -env local up
 ```
-
+To generate model
+```
+cd internal
+swagger generate model --name=[model-name] --spec=../docs/swagger.yml
+eg:
+swagger generate model --name=UserPayload --spec=../docs/swagger.yml
+```
+`model-name` is the models given in swagger file. eg: UserPayload
 ## ToDo:
  - Create architecture diagram.
  - Create swagger file for all api specification.

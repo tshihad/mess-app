@@ -1,5 +1,5 @@
 ## Featuers
-- Purchase managment, bill adding.
+- Purchase management, bill adding.
 - Bill split
 - Monthly expense calculation.
 - Cook attendence cum bill
