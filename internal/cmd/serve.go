@@ -2,18 +2,20 @@ package cmd
 
 import (
 	"database/sql"
-	"fmt"
 	"mess-app/internal/api"
+	"mess-app/shared"
 	"net/http"
+	"os"
 )
 
-func serveApp() {
+func serveApp(db *sql.DB, c *configs) {
 	done := make(chan int)
-	app := api.NewApp(nil, &sql.DB{})
+	logger := shared.NewLogger(c.logger.level, os.Stdout)
+	app := api.NewApp(logger, db)
 	go func() {
-		err := http.ListenAndServe(":8080", app.Router())
+		err := http.ListenAndServe(c.appConfig.host+":"+c.appConfig.port, app.Router())
 		if err != nil {
-			fmt.Println(err)
+			logger.Error(err)
 		}
 		done <- 1
 	}()

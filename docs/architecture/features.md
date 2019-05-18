@@ -1,0 +1,12 @@
+## Featuers
+- Purchase management, bill adding.
+- Bill split
+- Monthly expense calculation.
+- Cook attendence cum bill
+- Daily attendence in mess and bill calculations.
+- Menus list and notification.
+- Task list and notification.
+- Settle up
+- Payment and transaction managment.
+- List of goods.
+- Market rate comparison

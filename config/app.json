@@ -1,8 +1,19 @@
 {
     "app": {
-        "serve": {
+        "appconfig": {
             "host": "localhost",
             "port": 8080
+        },
+        "logger":{
+            "level":"debug",
+            "output":"stdout"
+        },
+        "db":{
+            "dbname":"mess",
+            "port":"5432",
+            "user":"postgres",
+            "host":"localhost",
+            "password":"pswd123"
         }
     }
 }

@@ -4,8 +4,16 @@ services:
     image: ${POSTGRES_IMAGE_NAME}
     restart:  always
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME} 
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PORT=${DB_PORT}
     volumes:
-        - ./migration/database.sql:/data/application/init.sql
+      - data-vol:/var/lib/postgresql/data
+      - ./migration/database.sql:/docker-entrypoint-initdb.d/database.sql
+    ports:
+      - "5432:5432"
+    container_name: mess-app-db-cont
+volumes:
+  data-vol:
+    driver: local
