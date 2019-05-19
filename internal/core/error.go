@@ -16,4 +16,5 @@ var (
 	ErrInvalidUserType  = errors.New("Invalid user type.(admin, cook and collegues are allowed)")
 	ErrConflict         = errors.New("Resource already exists")
 	ErrResourceNotFound = errors.New("resource not found")
+	ErrInvalidToken     = errors.New("Invalid token")
 )

@@ -1,7 +1,7 @@
 version: '3'
 services:
   db:
-    image: ${POSTGRES_IMAGE_NAME}
+    image: ${POSTGRES_IMAGE}
     restart:  always
     environment:
       - POSTGRES_USER=${DB_USER}
@@ -14,6 +14,13 @@ services:
     ports:
       - "5432:5432"
     container_name: mess-app-db-cont
+
+  redis:
+    image: ${REDIS_IMAGE}
+    restart: always
+    ports:
+      - "6379:6379"
+    container_name: mess-app-redis-cont
 volumes:
   data-vol:
     driver: local
