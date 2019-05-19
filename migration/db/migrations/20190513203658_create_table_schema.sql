@@ -14,9 +14,7 @@ CREATE TABLE users(
     users_id SERIAL PRIMARY KEY,
     users_name VARCHAR(50) NOT NULL,
     email VARCHAR(50),
-    session_key VARCHAR(64),
     password_digest VARCHAR(250),
-    users_type INTEGER NOT NULL,
     UNIQUE(users_name)
 );
 

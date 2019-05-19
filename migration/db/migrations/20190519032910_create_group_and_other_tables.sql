@@ -17,6 +17,7 @@ CREATE TABLE cluster(
 CREATE TABLE cluster_users(
     users_id INTEGER REFERENCES users(users_id),
     cluster_id INTEGER REFERENCES cluster(cluster_id),
+    users_type VARCHAR(20),
     created_at DATE NOT NULL DEFAULT CURRENT_DATE,
     updated_at DATE,
     deleted_at DATE,
