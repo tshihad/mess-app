@@ -100,11 +100,6 @@ definitions:
       email:
         type: "string"
         example: tshihad9@gmail.com
-      user_type:
-        type: "string"
-        description: "Only 3 values accepted (admin,collegues,cook)"
-        example: "admin"
-        pattern: admin|cook|collegues
       password:
         type: string
         example: password123
@@ -122,7 +117,6 @@ definitions:
     required:
     - "user_name"
     - "email"
-    - "user_type"
     properties:
       user_name:
         type: "string"
@@ -130,11 +124,7 @@ definitions:
       email:
         type: "string"
         example: tshihad9@gmail.com
-      user_type:
-        type: "string"
-        description: "Only 3 values accepted (admin,collegues,cook)"
-        example: "admin"
-        pattern: admin|cook|collegues
+
 responses:
   UserResponse:
     description: Client endpoint response

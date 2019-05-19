@@ -12,6 +12,7 @@ type Repo interface {
 	UserRepo
 	APIRespose
 	TokenRepo
+	GroupRepo
 }
 
 // UserRepo for user opertations
@@ -38,4 +39,8 @@ type TokenRepo interface {
 	GetAuthToken(username string) (string, error)
 	ValidateAuthToken(username, token string) error
 	SetAuthToken(username, token string) error
+}
+
+type GroupRepo interface {
+	InsertGroup() error
 }

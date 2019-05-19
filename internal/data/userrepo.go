@@ -9,27 +9,16 @@ import (
 )
 
 var (
-	userInsertQuery = `INSERT INTO users ( users_name, email, password_digest, users_type) VALUES($1,$2,$3,$4)`
+	userInsertQuery = `INSERT INTO users ( users_name, email, password_digest) VALUES($1,$2,$3)`
 	getusersQuery   = `SELECT users_name,email,users_type FROM users;`
 )
 
 func (r *repo) InsertUser(ctx context.Context, user models.UserPayload) error {
-	var userType int
-	switch *user.UserType {
-	case core.ADMIN_KEY:
-		userType = core.ADMIN
-	case core.COLLEGUES_KEY:
-		userType = core.COLLEGUES
-	case core.COOK_KEY:
-		userType = core.COOK
-	default:
-		return core.ErrInvalidUserType
-	}
 	hashedPwd, err := core.HashPassword([]byte(*user.Password))
 	if err != nil {
 		return errors.Wrap(err, "Failed to hash password")
 	}
-	res, err := r.DB.Exec(userInsertQuery, *user.UserName, *user.Email, hashedPwd, userType)
+	res, err := r.DB.Exec(userInsertQuery, *user.UserName, *user.Email, hashedPwd)
 	if err != nil {
 		return core.ErrConflict
 	}
