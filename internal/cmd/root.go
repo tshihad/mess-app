@@ -2,16 +2,17 @@ package cmd
 
 // Execute is the starting point of app
 func Execute() {
-	c, err := mustReadConfig()
+	logger, err := mustPrepareLogger()
 	if err != nil {
 		panic(err)
 	}
-	if err := mustValidateConfig(c); err != nil {
-		panic(err)
-	}
-	db, err := mustPrepareDB(c)
+	db, err := mustPrepareDB()
 	if err != nil {
-		panic(err)
+		logger.Panic(err)
 	}
-	serveApp(db, c)
+	redis, err := mustPrepareRedis()
+	if err != nil {
+		logger.Panic(err)
+	}
+	serveApp(db, redis, logger)
 }

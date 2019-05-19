@@ -2,18 +2,32 @@ package cmd
 
 import (
 	"database/sql"
+	"fmt"
+	"log"
 	"mess-app/internal/api"
-	"mess-app/shared"
 	"net/http"
-	"os"
+
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
+
+	"github.com/go-redis/redis"
 )
 
-func serveApp(db *sql.DB, c *configs) {
+func serveApp(db *sql.DB, redis *redis.Client, logger logrus.FieldLogger) {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Println(r)
+		}
+		redis.Close()
+		db.Close()
+	}()
 	done := make(chan int)
-	logger := shared.NewLogger(c.logger.level, os.Stdout)
-	app := api.NewApp(logger, db)
+	app := api.NewApp(logger, db, redis)
 	go func() {
-		err := http.ListenAndServe(c.appConfig.host+":"+c.appConfig.port, app.Router())
+		err := http.ListenAndServe(
+			fmt.Sprintf("%s:%d", viper.GetString("app.appconfig.host"), viper.GetInt("app.appconfig.port")),
+			app.Router(),
+		)
 		if err != nil {
 			logger.Error(err)
 		}

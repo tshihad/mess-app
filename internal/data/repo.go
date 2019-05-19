@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"mess-app/shared"
 
+	"github.com/go-redis/redis"
 	"github.com/sirupsen/logrus"
 )
 
@@ -12,14 +13,17 @@ type repo struct {
 	logrus.FieldLogger
 	*sql.DB
 	shared.Response
-	// Cache
+	Cache
 }
 
 // NewRepo returns repo instance
-func NewRepo(logger logrus.FieldLogger, db *sql.DB, response shared.Response) *repo {
+func NewRepo(logger logrus.FieldLogger, db *sql.DB, response shared.Response, redis *redis.Client) *repo {
 	return &repo{
-		logger,
-		db,
-		response,
+		FieldLogger: logger,
+		DB:          db,
+		Response:    response,
+		Cache: &redisCache{
+			c: redis,
+		},
 	}
 }
