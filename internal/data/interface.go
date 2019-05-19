@@ -18,6 +18,7 @@ type Repo interface {
 type UserRepo interface {
 	InsertUser(ctx context.Context, user models.UserPayload) error
 	GetUsers(ctx context.Context) ([]models.UserResponsePayload, error)
+	GetUserByUserName(username string) (*models.UserPayload, error)
 }
 
 // Cache := TODO
@@ -36,4 +37,5 @@ type TokenRepo interface {
 	GenerateAuthToken(username string) (string, error)
 	GetAuthToken(username string) (string, error)
 	ValidateAuthToken(username, token string) error
+	SetAuthToken(username, token string) error
 }

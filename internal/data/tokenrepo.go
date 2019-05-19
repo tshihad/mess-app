@@ -29,3 +29,7 @@ func (r *repo) ValidateAuthToken(username, token string) error {
 	}
 	return nil
 }
+
+func (r *repo) SetAuthToken(username, token string) error {
+	return r.Cache.Set(username, token, 0)
+}
