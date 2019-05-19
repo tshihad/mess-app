@@ -68,3 +68,7 @@ func (r *repo) GetUsers(ctx context.Context) ([]models.UserResponsePayload, erro
 	}
 	return users, nil
 }
+
+func (r *repo) GetUserByUserName(username string) (*models.UserPayload, error) {
+	return nil, nil
+}
