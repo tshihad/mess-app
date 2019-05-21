@@ -14,6 +14,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Settings from '@material-ui/icons/Settings';
 import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const styles = theme => ({
     root: {
@@ -49,15 +50,18 @@ class TopBar extends React.Component {
         const { classes } = this.props;
         const sideList = (
             <div className={classes.list}>
+                <Divider />
                 <List>
-                    {['Settings','Logout'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <Settings /> : <PowerSettingsNew />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
+                    {['Settings', 'Logout'].map((text, index) => (
+                        <div key={text}>
+                            <ListItem button>
+                                <ListItemIcon>{index % 2 === 0 ? <Settings /> : <PowerSettingsNew />}</ListItemIcon>
+                                <ListItemText primary={text} />
+                            </ListItem>
+                            <Divider />
+                        </div>
                     ))}
                 </List>
-                <Divider />
             </div>
         );
         return (
@@ -74,6 +78,23 @@ class TopBar extends React.Component {
                         </Toolbar>
                     </AppBar>
                     <Drawer open={this.state.menu} onClose={this.toggleDrawer('menu', false)}>
+                        <div
+                            tabIndex={0}
+                            role="button"
+                            onClick={this.toggleDrawer('menu', false)}
+                            onKeyDown={this.toggleDrawer('menu', false)}
+                        >
+                            <div className={classes.list}>
+                                <Divider />
+                                <List>
+                                    <ListItem button>
+                                        <ListItemIcon><AccountCircle /></ListItemIcon>
+                                        <ListItemText primary={'Fullname'} secondary={'@username'} />
+                                    </ListItem>
+                                </List>
+                            </div>
+                        </div>
+                        <Divider />
                         <div
                             tabIndex={0}
                             role="button"

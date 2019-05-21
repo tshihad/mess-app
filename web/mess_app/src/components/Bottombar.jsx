@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import HomeIcon from '@material-ui/icons/Home';
 import Group from '@material-ui/icons/Group';
-import Assignment from '@material-ui/icons/Assignment';
+import Receipt from '@material-ui/icons/Receipt';
 import SwapHoriz from '@material-ui/icons/SwapHoriz';
 import Restaurant from '@material-ui/icons/RestaurantMenu';
 
@@ -46,7 +46,7 @@ function BottomAppBar(props) {
                         <Group />
                     </IconButton>
                     <IconButton color="inherit" >
-                        <Assignment />
+                        <Receipt />
                     </IconButton>
                     <IconButton color="inherit" >
                         <Restaurant />
