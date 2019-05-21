@@ -116,13 +116,32 @@ definitions:
         type: string
         pattern: OK|ERROR
         example: ERROR
+
+  UserResponsePayload:
+    type: "object"
+    required:
+    - "user_name"
+    - "email"
+    - "user_type"
+    properties:
+      user_name:
+        type: "string"
+        example: shihad
+      email:
+        type: "string"
+        example: tshihad9@gmail.com
+      user_type:
+        type: "string"
+        description: "Only 3 values accepted (admin,collegues,cook)"
+        example: "admin"
+        pattern: admin|cook|collegues
 responses:
   UserResponse:
     description: Client endpoint response
     schema:
       allOf:
         - $ref: "#/definitions/resp"
-        - $ref: "#/definitions/UserPayload"
+        - $ref: "#/definitions/UserResponsePayload"
 
 parameters:
   Version:

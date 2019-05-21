@@ -4,16 +4,21 @@
             "host": "localhost",
             "port": 8080
         },
-        "logger":{
-            "level":"debug",
-            "output":"stdout"
+        "logger": {
+            "level": "debug",
+            "output": "stdout"
         },
-        "db":{
-            "dbname":"mess",
-            "port":"5432",
-            "user":"postgres",
-            "host":"localhost",
-            "password":"pswd123"
+        "db": {
+            "dbname": "mess",
+            "port": 5432,
+            "user": "postgres",
+            "host": "localhost",
+            "password": "pswd123"
+        },
+        "redis": {
+            "host": "localhost",
+            "password": "",
+            "port": 6379
         }
     }
 }

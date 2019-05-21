@@ -17,10 +17,28 @@ func (a *App) handlePostUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if err := a.InsertUser(ctx, user); err != nil {
-		a.Fail(w, 0, err.Error(), 500)
+		if err == core.ErrConflict {
+			a.Fail(w, core.CONFLICT_ERROR_CODE, "User already present", http.StatusFound)
+			return
+		}
+		a.Fail(w, 0, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	// Removing password from response
-	*user.Password = ""
-	a.Success(w, 201, user)
+	resp := models.UserResponsePayload{
+		UserName: user.UserName,
+		Email:    user.Email,
+		UserType: user.UserType,
+	}
+	a.Success(w, http.StatusCreated, resp)
+}
+
+// Deprecated function
+func (a *App) handleGetUsers(w http.ResponseWriter, r *http.Request) {
+	ctx := context.Background()
+	users, err := a.GetUsers(ctx)
+	if err != nil {
+		a.Fail(w, 0, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	a.Success(w, http.StatusOK, users)
 }

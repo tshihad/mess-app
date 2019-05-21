@@ -5,6 +5,8 @@ import (
 	"mess-app/internal/data"
 	"mess-app/shared"
 
+	"github.com/go-redis/redis"
+
 	"github.com/sirupsen/logrus"
 )
 
@@ -15,9 +17,9 @@ type App struct {
 }
 
 // NewApp return app instance
-func NewApp(logger logrus.FieldLogger, db *sql.DB) *App {
+func NewApp(logger logrus.FieldLogger, db *sql.DB, redis *redis.Client) *App {
 	response := shared.NewResponse(logger)
-	repo := data.NewRepo(logger, db, response)
+	repo := data.NewRepo(logger, db, response, redis)
 	return &App{
 		logger,
 		repo,
