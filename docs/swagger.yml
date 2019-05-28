@@ -84,14 +84,40 @@ paths:
             $ref: "#/responses/UserResponse"
         405:
           description: "Invalid input"
-
+  
+  /{version}/group:
+    post:
+      tags: 
+      - "group"
+      summary: "Add new group"
+      description: "Add new group with groupname"
+      operationId: PostGroup
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - $ref: '#/parameters/Version'
+      - in: "body"
+        name: body
+        description: "group body"
+        required: true
+        schema:
+          $ref: '#/definitions/GroupPayload'
+      responses:
+        201:
+          description: "Ok"
+          schema:
+            $ref: '#/definitions/GroupPayload'
+        405:
+          description: Invalid input
+      
 definitions:
   UserPayload:
     type: "object"
     required:
     - "user_name"
     - "email"
-    - "user_type"
     - "password"
     properties:
       user_name:
@@ -111,6 +137,15 @@ definitions:
         type: string
         pattern: OK|ERROR
         example: ERROR
+        
+  GroupPayload:
+    type: object
+    required: 
+    - "group_name"
+    properties:
+      group_name:
+        type: string
+        description: "Name of the group"
 
   UserResponsePayload:
     type: "object"

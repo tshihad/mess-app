@@ -8,7 +8,6 @@ CREATE TABLE cluster(
     cluster_id SERIAL PRIMARY KEY,
     author_id INTEGER REFERENCES users(users_id),
     title VARCHAR(50),
-    description VARCHAR(500),
     created_at DATE NOT NULL DEFAULT CURRENT_DATE,
     updated_at DATE,
     deleted_at DATE

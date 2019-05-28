@@ -3,6 +3,7 @@ module mess-app
 go 1.12
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.3.3 // indirect
 	github.com/go-chi/chi v4.0.2+incompatible
 	github.com/go-openapi/errors v0.19.0
 	github.com/go-openapi/strfmt v0.19.0
